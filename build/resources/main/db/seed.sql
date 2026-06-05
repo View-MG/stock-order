@@ -1,0 +1,49 @@
+ CREATE TABLE stock (
+     symbol VARCHAR(20) NOT NULL,
+     ceiling_price DECIMAL(15, 4) NOT NULL,
+     floor_price DECIMAL(15, 4) NOT NULL,
+     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+     PRIMARY KEY (symbol)
+ );
+
+ CREATE TABLE s_order (
+     order_id BIGINT NOT NULL AUTO_INCREMENT,
+     symbol VARCHAR(20) NOT NULL,
+     price DECIMAL(15, 4) NOT NULL,
+     vol INT NOT NULL,
+     order_date DATETIME NOT NULL,
+     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+     PRIMARY KEY (order_id),
+
+     CONSTRAINT fk_s_order_stock
+         FOREIGN KEY (symbol)
+         REFERENCES stock(symbol)
+         ON UPDATE CASCADE
+         ON DELETE RESTRICT,
+ );
+
+ INSERT INTO stock (symbol, ceiling_price, floor_price) VALUES
+ ('PTT',   42.0000, 18.0000),
+ ('AOT',   85.0000, 35.0000),
+ ('ADVANC', 330.0000, 180.0000),
+ ('CPALL', 95.0000, 35.0000),
+ ('BDMS',  42.0000, 18.0000),
+ ('KBANK', 180.0000, 90.0000),
+ ('SCB',   150.0000, 70.0000),
+ ('BBL',   190.0000, 90.0000),
+ ('KTB',   35.0000, 10.0000),
+ ('DELTA', 180.0000, 40.0000),
+ ('GULF',  75.0000, 25.0000),
+ ('CPN',   90.0000, 35.0000),
+ ('CRC',   60.0000, 20.0000),
+ ('OR',    35.0000, 10.0000),
+ ('PTTEP', 190.0000, 90.0000),
+ ('TRUE',  18.0000, 4.0000),
+ ('MINT',  45.0000, 15.0000),
+ ('BH',    320.0000, 150.0000),
+ ('TISCO', 130.0000, 60.0000),
+ ('TOP',   80.0000, 30.0000);

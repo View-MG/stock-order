@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: servlet
+  datasource:
+    url: jdbc:mysql://localhost:3306/stockorder
+    username: root
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
