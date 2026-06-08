@@ -1,6 +1,7 @@
 package com.setintern.stockorder.controller;
 
 import com.setintern.stockorder.dto.CreateOrder;
+import com.setintern.stockorder.dto.UpdateOrder;
 import com.setintern.stockorder.entity.Order;
 import com.setintern.stockorder.service.OrderService;
 import jakarta.validation.Valid;
@@ -32,7 +33,7 @@ public class OrderController {
     }
 
     @PatchMapping("/order/{id}")
-    public String updateOrder(@Valid @PathVariable String id, @RequestBody CreateOrder req){
+    public String updateOrder(@PathVariable String id, @Valid @RequestBody UpdateOrder req){
         return orderService.updateOrder(id, req);
     }
 

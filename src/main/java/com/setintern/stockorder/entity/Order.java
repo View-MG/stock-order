@@ -4,30 +4,31 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "s_order")
+@Table(name = "`order`")
 public class Order {
     @Id
-    @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
     private Long orderId;
 
-    @Column(name = "symbol")
+    @Column(name = "symbol", length = 20, nullable = false)
     private String symbol;
 
-    @Column(name = "price")
-    private int price;
+    @Column(name = "price", precision = 15, scale = 4, nullable = false)
+    private BigDecimal price;
 
-    @Column(name = "vol")
-    private int vol;
+    @Column(name = "vol", nullable = false)
+    private Integer vol;
 
-    @Column(name = "orderDate")
+    @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate;
 
     public Order(){}
-    public Order(String symbol, int price, int vol) {
+    public Order(String symbol, BigDecimal price, int vol) {
         this.symbol = symbol;
         this.price = price;
         this.vol = vol;
@@ -49,11 +50,11 @@ public class Order {
         this.symbol = symbol;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

@@ -8,7 +8,7 @@
      PRIMARY KEY (symbol)
  );
 
- CREATE TABLE s_order (
+ CREATE TABLE `order` (
      order_id BIGINT NOT NULL AUTO_INCREMENT,
      symbol VARCHAR(20) NOT NULL,
      price DECIMAL(15, 4) NOT NULL,
@@ -19,7 +19,7 @@
 
      PRIMARY KEY (order_id),
 
-     CONSTRAINT fk_s_order_stock
+     CONSTRAINT fk_order_stock
          FOREIGN KEY (symbol)
          REFERENCES stock(symbol)
          ON UPDATE CASCADE

@@ -11,15 +11,16 @@ import java.math.BigDecimal;
 @Table(name = "stock")
 public class Stock {
     @Id
-    @Column(name = "symbol")
+    @Column(name = "symbol", length = 20, nullable = false)
     private String symbol;
 
-    @Column(name = "ceiling_price")
+    @Column(name = "ceiling_price", nullable = false, precision = 15, scale = 4)
     private BigDecimal ceilingPrice;
 
-    @Column(name = "floor_price")
+    @Column(name = "floor_price", nullable = false, precision = 15, scale = 4)
     private BigDecimal floorPrice;
 
+    public Stock() {}
     public Stock(String symbol, BigDecimal ceilingPrice, BigDecimal floorPrice) {
         this.symbol = symbol;
         this.ceilingPrice = ceilingPrice;

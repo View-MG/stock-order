@@ -5,38 +5,14 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public class CreateOrder {
-    @NotNull(message = "order id cannot be null")
-    private String symbol;
-
+public class UpdateOrder {
     @NotNull(message = "price is required")
     @Positive(message = "price must be greater than 0")
     private BigDecimal price;
 
+    @NotNull(message = "vol is required")
     @Positive(message = "vol must be greater than 0")
     private int vol;
-
-    public CreateOrder(String symbol, BigDecimal price, int vol) {
-        this.symbol = symbol;
-        this.price = price;
-        this.vol = vol;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 
     public int getVol() {
         return vol;
@@ -46,4 +22,11 @@ public class CreateOrder {
         this.vol = vol;
     }
 
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 }
